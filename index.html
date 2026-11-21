@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Booking System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">JourneyGo 🚌</div>
+    <nav>
+        <a href="#search">Search</a>
+        <a href="#bookings">My Bookings</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Explore Your Journey</h1>
+    <p>Book your bus tickets easily and travel comfortably.</p>
+</section>
+
+<main>
+
+<section class="search-section" id="search">
+    <h2>Find Your Bus</h2>
+
+    <form id="searchForm">
+        <div class="form-group">
+            <label>From</label>
+            <select id="source" required>
+                <option value="">Select Source</option>
+                <option>Hyderabad</option>
+                <option>Bangalore</option>
+                <option>Chennai</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>To</label>
+            <select id="destination" required>
+                <option value="">Select Destination</option>
+                <option>Hyderabad</option>
+                <option>Bangalore</option>
+                <option>Chennai</option>
+                <option>Mumbai</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Journey Date</label>
+            <input type="date" id="journeyDate" required>
+        </div>
+
+        <button type="submit">Search Buses</button>
+    </form>
+</section>
+
+<div id="message"></div>
+
+<section class="results-section">
+    <h2>Available Buses</h2>
+    <div id="results" class="results-grid">
+        <p>Search for a journey to see available buses.</p>
+    </div>
+</section>
+
+<section class="bookings-section" id="bookings">
+    <h2>My Bookings</h2>
+
+    <form id="bookingSearchForm">
+        <input type="email" id="bookingEmail"
+               placeholder="Enter your booking email" required>
+        <button type="submit">View Bookings</button>
+    </form>
+
+    <div id="bookingResults"></div>
+</section>
+
+</main>
+
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Book Your Ticket</h2>
+
+        <form id="bookingForm">
+            <input type="hidden" id="selectedJourney">
+
+            <label>Passenger Name</label>
+            <input type="text" id="passengerName" maxlength="100" required>
+
+            <label>Email</label>
+            <input type="email" id="passengerEmail" maxlength="150" required>
+
+            <label>Number of Seats</label>
+            <input type="number" id="seats" min="1" max="6" value="1" required>
+
+            <button type="submit">Confirm Booking</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 JourneyGo - Bus Ticket Booking System</p>
+</footer>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
